@@ -1,0 +1,87 @@
+Script started on 2018-11-07 14:07:08-07:00
+]0;alexandar.zecevic@csa3:~/Assignments/cpsc355/4alexandar.zecevic@csa3:~/Assignments/cpsc355/4$ gdb assign4
+GNU gdb (GDB) Fedora 8.1.1-3.fc28
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "aarch64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from assign4...(no debugging symbols found)...done.
+(gdb) b print [Kb4
+Breakpoint 1 at 0x400790
+(gdb) b done
+Breakpoint 2 at 0x400808
+(gdb) display/i $pc
+1: x/i $pc
+<error: No registers.>
+(gdb) r
+Starting program: /home/uga/alexandar.zecevic/Assignments/cpsc355/4/assign4 
+warning: the debug information found in "/usr/lib/debug//usr/lib64/ld-2.27.so.debug" does not match "/lib/ld-linux-aarch64.so.1" (CRC mismatch).
+
+Missing separate debuginfos, use: dnf debuginfo-install glibc-2.27-32.fc28.aarch64
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.27.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//usr/lib64/libc-2.27.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+Initial box values:
+
+Breakpoint 1, 0x0000000000400790 in printb4 ()
+1: x/i $pc
+=> 0x400790 <printb4+12>:	bl	0x4006b8 <printbox>
+(gdb) rdisplay/i $pc
+2: x/i $pc
+=> 0x400790 <printb4+12>:	bl	0x4006b8 <printbox>
+(gdb) x/20 $fp+16
+0xfffffffff130:	0	0	1	1
+0xfffffffff140:	1	0	0	1
+0xfffffffff150:	1	1	0	0
+0xfffffffff160:	0	0	4195548	0
+0xfffffffff170:	0	0	0	0
+(gdb) x/20 $fp+16[K[K36
+0xfffffffff144:	0	0	1	1
+0xfffffffff154:	1	0	0	0
+0xfffffffff164:	0	4195548	0	0
+0xfffffffff174:	0	0	0	4195472
+0xfffffffff184:	0	0	0	0
+(gdb) c
+Continuing.
+Box first origin = (0, 0) width = 1 height = 1 area = 1
+Box second origin = (0, 0) width = 1 height = 1 area = 1
+
+Changed box values:
+Box first origin = (-5, 7) width = 1 height = 1 area = 1
+Box second origin = (0, 0) width = 3 height = 3 area = 9
+
+Breakpoint 2, 0x0000000000400808 in done ()
+1: x/i $pc
+=> 0x400808 <done+4>:	ldp	x29, x30, [sp], #64
+2: x/i $pc
+=> 0x400808 <done+4>:	ldp	x29, x30, [sp], #64
+(gdb) cx/20 $fp+3616
+0xfffffffff130:	-5	7	1	1
+0xfffffffff140:	1	0	0	3
+0xfffffffff150:	3	9	0	0
+0xfffffffff160:	0	0	4195548	0
+0xfffffffff170:	0	0	0	0
+(gdb) x/20 $fp+16[C[C[C[C[C[Cc[Kx/20 $fp+36
+0xfffffffff144:	0	0	3	3
+0xfffffffff154:	9	0	0	0
+0xfffffffff164:	0	4195548	0	0
+0xfffffffff174:	0	0	0	4195472
+0xfffffffff184:	0	0	0	0
+(gdb) c
+Continuing.
+[Inferior 1 (process 22515) exited normally]
+(gdb) q
+]0;alexandar.zecevic@csa3:~/Assignments/cpsc355/4alexandar.zecevic@csa3:~/Assignments/cpsc355/4$ exit
+exit
+
+Script done on 2018-11-07 14:09:53-07:00
